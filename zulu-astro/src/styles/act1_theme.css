@@ -411,6 +411,14 @@ h2 {
   filter: grayscale(1) brightness(0.65);
 }
 .image-card:hover img { transform: scale(1.07); filter: grayscale(0) brightness(1.0); }
+
+#homeGallery .image-card img {
+  filter: grayscale(0) brightness(0.85);
+}
+#homeGallery .image-card:hover img {
+  filter: grayscale(0) brightness(1.0);
+}
+
 .image-card .img-label { display: none !important; 
   position: absolute; bottom: 14px; left: 16px;
   color: rgba(255,255,255,0.88); font-family: var(--f-mono); font-size: 0.58rem;
