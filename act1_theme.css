@@ -217,6 +217,11 @@ header {
   width: 100%; max-width: 1240px; padding: 0 24px;
   display: flex; justify-content: center; align-items: center; z-index: 1;
 }
+.subpage-header {
+  flex-direction: column;
+  padding-top: 160px;
+  padding-bottom: 40px;
+}
 .hero-text-content {
   text-align: center;
   will-change: transform;
