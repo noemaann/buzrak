@@ -222,6 +222,9 @@ header {
   padding-top: 160px;
   padding-bottom: 40px;
 }
+.subpage-header h1, .subpage-header p, .subpage-header .header-eyebrow {
+  text-align: center;
+}
 .hero-text-content {
   text-align: center;
   will-change: transform;
