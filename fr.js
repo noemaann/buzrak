@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "nithash": {
       name: "Nithash Committee",
       period: "August 2025 — November 2025",
-      members: ["PP", "Shon", "Alan", "Sangeeth", "Aman"],
+      members: ["Nithash (Secretary)", "PP", "Shon", "Alan", "Sangeeth", "Aman"],
       achievements: "Nithash led the committee to organize the first mess without common starting troubles and attempted to implement hostel-wide Wi-Fi.",
       disadvantages: "Failure to distribute chicken equally, the occurrence of food corruption, and that the committee stepped down due to allegations of food corruption.",
       fallReason: "Stepped down due to allegations of food corruption."
@@ -181,17 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
     "alphons": {
       name: "Alphons Committee",
       period: "November 2025 — February 2026",
-      members: ["Alphons (Secretary)", "Goutham D", "Althaf", "Noeman", "Abhinav"],
-      achievements: "Restored midnight canteen access. Repaired the long-broken washing machines in Block B.",
-      disadvantages: "Budget shortfalls led to lack of sports equipment and inability to fund inter-hostel tournaments.",
-      fallReason: "Term ended gracefully, though widely criticised for a chaotic farewell party."
+      members: ["Alphons", "Noeman", "Abhinav", "Althaf", "Goutham K", "Roshan", "Nithash"],
+      achievements: "First Democraticaly elected commitee, increased amount of chicken from 3 per week to 5 per week, give proposal for water cooler and filter.",
+      disadvantages: "due to lack of self interest , Shortage came for food servings,Can't implement cooler .",
+      fallReason: "stepped down due to shortage for boys for food serving"
     },
     "adnan": {
       name: "Adnan Committee",
       period: "February 2026 — May 2026",
-      members: ["Adnan (Secretary)", "Basim", "Aman", "Yacoob", "Shaheen"],
-      achievements: "Launched weekend gaming tournaments and fully renovated the TV room with new seating.",
-      disadvantages: "Noise complaints from wardens spiked considerably. Warden relations hit an all-time low.",
+      members: ["Adnan", "Nithash", "PP", "Nihal", "Vaseem", "Reyyan", "Nishal", "Sreedin", "Huzail", "Alphons", "Noeman"],
+      achievements: "First commitee with over 10 members, implemented Water cooler and filter, caught huge corruption done by college society and analysed all bills after that.",
+      disadvantages: "Allegations heard that all chickens were replaced with eggs in one week.",
       fallReason: "Dissolved at semester end as hostelites dispersed for summer holidays."
     }
   };
@@ -205,18 +205,36 @@ document.addEventListener("DOMContentLoaded", () => {
     set('cAchievements', data.achievements);
     set('cDisadvantages', data.disadvantages);
     set('cFallReason', data.fallReason);
+    
     const cMembers = document.getElementById("cMembers");
     if (cMembers) {
       cMembers.innerHTML = "";
+      const allMates = ["Jasim","Sanjay","Goutham D","Levin","Shinil","Althaf","Aashir","Noeman","Reyyan","Roshan","Nishal","Shibil","Arshad","Nithash","PP","Farseen","Aravind","Huzail","Adhin","Alan","Josekutty","Abhinav","Anuchind","Hrishi","Vaseem","Shabeel","Rasl","Adith","Shaz","Hamdan","Shon","Shemil","Amjad","Shahanad","Nihal","Geo","Sangeeth","Naseef","Anandhu","Sreedin","Faheem","Jayanth","Vaishnav","Sabith","Drupad","Goutham K","Akbar","Alphons","Shaheen","Yacoob","Aman","Adnan","Basim"];
       data.members.forEach(m => {
-        const li = document.createElement("li");
-        li.innerText = m;
-        cMembers.appendChild(li);
+        let baseName = m.replace(" (Secretary)", "");
+        let index = allMates.findIndex(name => name.toLowerCase() === baseName.toLowerCase());
+        
+        if (index !== -1) {
+          const i = index + 1;
+          const a = document.createElement("a");
+          a.className = "mate-card reveal visible";
+          a.href = `member.html?id=${i}&name=${encodeURIComponent(allMates[index])}`;
+          const imgSrc = encodeURI(`DP's/${allMates[index]}.jpg`);
+          a.innerHTML = `
+            <img class="mate-photo" src="${imgSrc}" alt="${allMates[index]}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(allMates[index])}&background=1a3a28&color=f7f4ed&size=80'">
+            <div class="mate-name">${m}</div>
+          `;
+          cMembers.appendChild(a);
+        } else {
+          const div = document.createElement("div");
+          div.className = "mate-card reveal visible";
+          div.innerHTML = `<div class="mate-name" style="padding: 20px;">${m}</div>`;
+          cMembers.appendChild(div);
+        }
       });
     }
   }
 
-  
   /* ─── ENHANCED 3D STATS & SCRAMBLE COUNTER ──────── */
   document.querySelectorAll('.stat-item').forEach(card => {
     
