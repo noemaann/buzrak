@@ -568,6 +568,49 @@ h2 {
   text-align: center;
 }
 
+/* ─── SHUFFLE BUTTON ──────────────────────────────── */
+.shuffle-btn {
+  background: var(--liq);
+  border: 1px solid var(--liq-border);
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-expo);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+}
+
+.shuffle-btn:hover {
+  background: var(--liq-hover);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.shuffle-btn:active {
+  transform: translateY(1px);
+}
+
+.shuffling {
+  opacity: 0 !important;
+  transform: scale(0.96) !important;
+  filter: blur(12px) brightness(1.2) drop-shadow(0 15px 30px rgba(167, 199, 203, 0.2)) !important;
+  transition: all 0.4s ease-in-out !important;
+  pointer-events: none !important;
+}
+
+.shuffling::before {
+  transform: translate3d(100%, 0, 0) !important;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.4) 40%, rgba(255, 255, 255, 0.8) 50%, transparent 80%) !important;
+  transition: transform 0.2s var(--ease-expo) !important;
+}
+
+
 /* ─── STATS BAR ───────────────────────────────────── */
 .stats-bar {
   display: flex;
@@ -821,8 +864,12 @@ h2 {
   aspect-ratio: 4/3;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s, opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 6px 24px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.image-card.reveal {
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s, opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 
 .image-card::after {
