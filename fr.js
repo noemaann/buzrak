@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fallReason: "stepped down due to shortage for boys for food serving"
     },
     "adnan": {
-      name: "Adnan Committee",
+      name: "Adnan Committee (മുട്ട കമ്മിറ്റി)",
       period: "February 2026 — May 2026",
       members: ["Adnan", "Nithash", "PP", "Nihal", "Vaseem", "Reyyan", "Nishal", "Sreedin", "Huzail", "Alphons", "Noeman"],
       achievements: "First commitee with over 10 members, implemented Water cooler and filter, caught huge corruption done by college society and analysed all bills after that.",
