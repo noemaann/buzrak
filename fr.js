@@ -454,86 +454,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-
-
-
-
   /* ─── CANDIDS GALLERY ────────────────────────────── */
   const candidsGallery = document.getElementById("candidsGallery");
   if (candidsGallery) {
     candidsGallery.innerHTML = '';
-
-    const shuffleArray = (array) => {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+    candidImgs.forEach((imgName, index) => {
+      const div = document.createElement("div");
+      div.className = "image-card reveal";
+      const encodedName = encodeURIComponent(imgName);
+      div.innerHTML = `<img loading="lazy" src="https://raw.githubusercontent.com/noemaann/Zlu-images/main/zluimages/${encodedName}" alt="Candid ${index + 1}">`;
+      candidsGallery.appendChild(div);
+      if (typeof revealObs !== 'undefined') {
+        revealObs.observe(div);
       }
-    };
-
-    const renderCandids = (imgs) => {
-      const existingImgs = candidsGallery.querySelectorAll('.image-card img');
-      if (existingImgs.length === imgs.length) {
-        existingImgs.forEach((imgEl, index) => {
-          const encodedName = encodeURIComponent(imgs[index]);
-          imgEl.src = `https://raw.githubusercontent.com/noemaann/Zlu-images/main/zluimages/${encodedName}`;
-        });
-      } else {
-        candidsGallery.innerHTML = '';
-        imgs.forEach((imgName, index) => {
-          const div = document.createElement("div");
-          div.className = "image-card reveal visible"; // 'visible' prevents re-triggering reveal animation needlessly on shuffle
-          const encodedName = encodeURIComponent(imgName);
-          div.innerHTML = `<img loading="lazy" src="https://raw.githubusercontent.com/noemaann/Zlu-images/main/zluimages/${encodedName}" alt="Candid ${index + 1}">`;
-          candidsGallery.appendChild(div);
-          if (typeof revealObs !== 'undefined') {
-            revealObs.observe(div);
-          }
-        });
-      }
-    };
-
-    renderCandids(candidImgs); // Initial population
-
-    const shuffleBtn = document.getElementById('shuffleCandidsBtn');
-    if (shuffleBtn) {
-      let isShuffling = false;
-      let isHovering = false;
-      let candidsAutoShuffle;
-
-      const startAutoShuffle = () => {
-        clearInterval(candidsAutoShuffle);
-        if (!isHovering) {
-          candidsAutoShuffle = setInterval(() => { shuffleBtn.click(); }, 3500);
-        }
-      };
-
-      shuffleBtn.addEventListener('click', () => {
-        if (isShuffling) return;
-        isShuffling = true;
-        startAutoShuffle();
-
-        const cards = candidsGallery.querySelectorAll('.image-card');
-        cards.forEach(card => card.classList.add('shuffling'));
-        
-        setTimeout(() => {
-          shuffleArray(candidImgs);
-          renderCandids(candidImgs);
-          
-          const currentCards = candidsGallery.querySelectorAll('.image-card');
-          currentCards.forEach(card => card.classList.remove('shuffling'));
-          setTimeout(() => { isShuffling = false; }, 400);
-        }, 400); // Wait for fade out
-      });
-
-      startAutoShuffle();
-      candidsGallery.addEventListener('mouseenter', () => {
-        isHovering = true;
-        clearInterval(candidsAutoShuffle);
-      });
-      candidsGallery.addEventListener('mouseleave', () => {
-        isHovering = false;
-        startAutoShuffle();
-      });
-    }
+    });
   }
 });

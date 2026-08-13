@@ -419,6 +419,9 @@ header {
 
 .subpage-header {
   flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 160px;
   padding-bottom: 40px;
 }
@@ -614,7 +617,7 @@ h2 {
 /* ─── STATS BAR ───────────────────────────────────── */
 .stats-bar {
   display: flex;
-  margin: 72px 48px;
+  margin: 3rem  auto;
   background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--r-2xl);
